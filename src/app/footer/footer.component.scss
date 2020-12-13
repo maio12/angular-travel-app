@@ -1,0 +1,14 @@
+:host {
+  height: 100%;
+}
+
+.container--footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.disclaimer {
+  font-size: 16px;
+  font-style: italic;
+}

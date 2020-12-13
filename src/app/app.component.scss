@@ -1,0 +1,24 @@
+.header {
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #1976d2;
+}
+
+.container--content{
+  overflow-y: scroll;
+}
+
+.content {
+  height: 77vh;
+  scrollbar-width: none;
+  background: #fafafa;
+}
+
+.footer {
+  height: 8vh;
+  background: #263238;
+  color: white;
+  text-align: center;
+}
