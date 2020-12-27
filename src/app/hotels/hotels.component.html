@@ -1,3 +1,4 @@
-<div *ngFor="let hotel of hotels">
-  {{hotel.name}}
+<div class="hotels">
+  <app-hotel-card *ngFor="let hotel of hotels" [hotel]="hotel">
+  </app-hotel-card>
 </div>
