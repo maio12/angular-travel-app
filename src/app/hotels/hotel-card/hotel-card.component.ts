@@ -8,10 +8,23 @@ import { Hotel } from 'src/app/shared/models/hotels.model';
 })
 export class HotelCardComponent implements OnInit {
   @Input() hotel!: Hotel;
+  currentImageIndex = 0;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onPreviousClicked() {
+    if (this.currentImageIndex > 0) {
+      this.currentImageIndex--;
+    }
+  }
+
+  onNextClicked() {
+    if (this.currentImageIndex < this.hotel.imgs.length - 1) {
+      this.currentImageIndex++;
+    }
   }
 
 }

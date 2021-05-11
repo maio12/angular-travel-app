@@ -1,4 +1,4 @@
-<agm-map [latitude]="latitude" [longitude]="logitude">
+<agm-map [latitude]="latitude" [longitude]="logitude" (mapReady)="onMapReady()">
   <agm-marker 
   *ngFor="let hotel of hotels" 
   [latitude]="hotel.lat" 

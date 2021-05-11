@@ -1,7 +1,15 @@
+
 <div class="container container--header">
   <h1 class="title">Travelapp</h1>
+
   <div class="navbar">
-    <a class="navbar__link" routerLink="/hotels">Hotels</a>
-    <a class="navbar__link" routerLink="/map">Map</a>
+
+    <div class="navbar__link-container">
+      <a class="navbar__link" routerLink="/hotels" routerLinkActive="navbar__link--active">Hotels</a>
+      <a class="navbar__link" routerLink="/map" routerLinkActive="navbar__link--active">Map</a>
+    </div>
+
+    <app-auth></app-auth>
   </div>
+
 </div>

@@ -1,8 +1,15 @@
-<div class="card">
-  <div class="card__name">
-    {{ hotel.name }}
+
+<div class="card-container">
+  <div class="hotel-card">
+    <div class="hotel-card__name">
+      {{ hotel.name }}
+    </div>
+    <img class="hotel-card__image" [src]="hotel | hotelCardImage: currentImageIndex">
+    <div class="hotel-card__button-container">
+      <button class="hotel-card__button" (click)="onPreviousClicked()">{{"\<"}}</button>
+      <button class="hotel-card__button" (click)="onNextClicked()">></button>
+    </div>
   </div>
-  <div class="card__image">
-    <img [src]="hotel.imgs[0].replace('{size}','b')">
+  <div class="card-info">
   </div>
 </div>

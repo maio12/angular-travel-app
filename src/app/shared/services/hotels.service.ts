@@ -9,7 +9,7 @@ import { Entity, Hotel, ImagesResponse, SuggestionsResposne } from '../models/ho
   providedIn: 'root'
 })
 export class HotelsService {
-  hotelsSubject: BehaviorSubject<Hotel[]> = new BehaviorSubject<Hotel[]>([]);
+  hotelsSubject: BehaviorSubject<Hotel[]> = new BehaviorSubject<Hotel[]>([]); //domanda, un Subject e' un Observable che non solo posso ascoltare ma puo' anche comunicare. con il next(). behaviorsubject: un observable che emette l'ultimo valore, possiamo subscriverci a un subject pure.
 
   httpOptions = {
     headers: {
@@ -18,8 +18,8 @@ export class HotelsService {
     }
   };
 
-  constructor(private http: HttpClient) {
-    this.hotelsSubject.subscribe(res => console.log(res));
+  constructor(private http: HttpClient) { //http module, modulo interno di angular per requests. 
+    //Differenza tra usare fetch e http module e' che ci ritorna un Observable direttamente, non e' neccesario il from promise.
     // TODO: CREATE A RESOLVER TO GET TEST DATA
     const localTestData = localStorage.getItem('test');
     if (localTestData) {
@@ -49,7 +49,9 @@ export class HotelsService {
 
           return hotelsEntities;
         }),
-        switchMap(res => {
+        switchMap(res => { //switchmap, invece del map normale dentro il pipe, il switchmap, trasforma cio ce' e' dentro l'observable. switchMap: funziona che in entrata abbiamo entity[] e in uscita un Observable di hotels[].
+        //fa un flat dell Observable in uscita praticamante, ritorna solo l'Hotel[], quello che ha dentro l'Observable in pratica
+        //invece di restituire l'Observable, ti restituisce qualsiasi cosa che c'e' dentro.
 
           const requests = res.map((entity, index) => {
 
@@ -72,9 +74,10 @@ export class HotelsService {
             );
             return delayedResponse;
           });
-          return forkJoin(requests);
+          return forkJoin(requests); //forkjoin: apsetta che tutte finiscano e poi crea solo un observable per averere tutto l'array di risposte
+          //quindi cosi' diventa un observable di Hotel array. forkJoin: vogliamo solo un Observable, non un array di observable (come promise all)
         }),
-        map(res => res)
+        map(res => res) //domanda
       );
   }
 }
